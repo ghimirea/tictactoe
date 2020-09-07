@@ -10,7 +10,7 @@ const style = {
 };
 
 const Square = ({ value, onClick }) => (
-  <button style={style} onClick={()=>console.log(value)}>
+  <button style={style} onClick={()=>onClick()}>
     {value}
   </button>
 );
