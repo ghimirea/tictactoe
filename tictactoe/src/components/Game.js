@@ -10,12 +10,30 @@ const styles = {
     fontWeight: '800',
     padding: 'var(--headerPadding)',
     textAlign: 'center',
-    position:'relative'
+    position: 'relative',
   },
 
   turn: {
-    width: '200px',
-    margin: '20px auto',
+    border: '0.1 rem solid black',
+    position: 'absolute',
+    // width: '200px',
+    // margin: '20px auto',
+    backgroundColor: 'lightblue',
+    // display: 'flex',
+    justifyContent: 'flex-start',
+    alignItem: 'flex-start',
+    top: '5%',
+    left: '0',
+  },
+  move: {
+    border: '0.1 rem solid black',
+    fontSize: '1rem',
+    // display: 'flex',
+    padding: '0.3rem',
+    margin: '0.3rem',
+    backgroundColor: 'lightblue',
+    top: '5%',
+    right: '0',
   },
   footer: {
     backgroundColor: 'lightblue',
@@ -23,9 +41,9 @@ const styles = {
     fontWeight: '800',
     padding: 'var(--footerPadding)',
     textAlign: 'center',
-    bottom:'0',
-    width:'100%',
-    position:'fixed'
+    bottom: '0',
+    width: '100%',
+    position: 'fixed',
   },
 };
 
@@ -60,12 +78,11 @@ const Game = () => {
   //Reset the Game or move to certain steps
   const gameMoves = () =>
     history.map((_step, move) => {
-      console.log('Inside gameMoves map');
       const moveNumber = move ? `Move- ${move}` : 'Start';
       return (
-        <li key={move}>
-          <button onClick={() => goTo(move)}>{moveNumber}</button>
-        </li>
+        <button style={styles.move} onClick={() => goTo(move)}>
+          <p>{moveNumber}</p>
+        </button>
       );
     });
 
@@ -75,13 +92,15 @@ const Game = () => {
       <header style={styles.header}>Tic-Tac-Toe Game with Time Travel</header>
       <main>
         <Board squares={history[stepNumber]} onClick={handleClick} />
-        <div style={styles.turn}>
-          <p>
-            {winner ? `The Winner is ${winner}` : `Next Player:  ${nextPlayer}`}
-            {gameMoves()}
-          </p>
-        </div>
+
+        <p style={styles.turn}>
+          {winner ? `The Winner is ${winner}` : `Next Player:  ${nextPlayer}`}
+        </p>
+
         <div>
+          <div style={{ position: 'absolute', top: '5%', right: '0' }}>
+            <p>{gameMoves()}</p>
+          </div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             feugiat varius tortor et cursus. Mauris at molestie sem, eu
