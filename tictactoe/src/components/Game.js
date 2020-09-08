@@ -1,10 +1,32 @@
 import React, { useState } from 'react';
 import Board from './Board';
 import calcWinner from '../calcWinner';
+import '../App.css';
 
 const styles = {
-  width: '200px',
-  margin: '20px auto',
+  header: {
+    backgroundColor: 'lightblue',
+    fontSize: 'var(--headerFontSize)',
+    fontWeight: '800',
+    padding: 'var(--headerPadding)',
+    textAlign: 'center',
+    position:'relative'
+  },
+
+  turn: {
+    width: '200px',
+    margin: '20px auto',
+  },
+  footer: {
+    backgroundColor: 'lightblue',
+    fontSize: 'var(--footerFontSize)',
+    fontWeight: '800',
+    padding: 'var(--footerPadding)',
+    textAlign: 'center',
+    bottom:'0',
+    width:'100%',
+    position:'fixed'
+  },
 };
 
 const Game = () => {
@@ -50,13 +72,66 @@ const Game = () => {
   const nextPlayer = isNext ? 'X' : 'O';
   return (
     <>
-      <Board squares={history[stepNumber]} onClick={handleClick} />
-      <div style={styles}>
-        <p>
-          {winner ? `The Winner is ${winner}` : `Next Player:  ${nextPlayer}`}
-          {gameMoves()}
-        </p>
-      </div>
+      <header style={styles.header}>Tic-Tac-Toe Game with Time Travel</header>
+      <main>
+        <Board squares={history[stepNumber]} onClick={handleClick} />
+        <div style={styles.turn}>
+          <p>
+            {winner ? `The Winner is ${winner}` : `Next Player:  ${nextPlayer}`}
+            {gameMoves()}
+          </p>
+        </div>
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            feugiat varius tortor et cursus. Mauris at molestie sem, eu
+            consequat urna. Praesent a tempor augue. Vestibulum suscipit
+            eleifend tempus. Nunc ultricies iaculis viverra. Vivamus egestas sit
+            amet purus a varius. Pellentesque neque nisi, feugiat ac ex et,
+            fermentum sodales ex. Proin id purus sit amet magna luctus eleifend.
+            Mauris ut libero id est fringilla sollicitudin eget eu nibh. Aenean
+            eu tellus quis leo blandit dictum sed nec magna. Nunc tincidunt elit
+            sit amet imperdiet egestas. Nunc ac tortor sagittis, laoreet leo
+            nec, interdum lectus. Nulla ut est sed odio sollicitudin dictum.
+          </p>
+          <p>
+            Nunc cursus facilisis risus. In hac habitasse platea dictumst.
+            Pellentesque pellentesque dui quis elit ornare iaculis. Integer id
+            bibendum sem. Quisque ante mi, cursus suscipit sem non, elementum
+            convallis lectus. Vestibulum at congue nibh. Nam sit amet maximus
+            neque, at viverra nulla. Morbi mollis augue eget purus rutrum, et
+            tincidunt purus egestas. Phasellus pretium elit dui, eu tincidunt
+            elit tincidunt a. Suspendisse eu ullamcorper ligula. Quisque a lacus
+            velit. Donec commodo arcu a purus interdum, nec tincidunt tortor
+            imperdiet. Vivamus gravida nulla sed lectus pellentesque, at
+            pulvinar odio blandit. Aenean nec ligula tempor, fermentum tellus
+            in, dignissim justo. Nam sollicitudin pharetra suscipit. Duis nec
+            purus at orci faucibus pulvinar non nec diam. Mauris magna dui,
+            sagittis vitae sollicitudin vitae, lacinia sed tellus. Class aptent
+            taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+            himenaeos. Quisque non scelerisque justo. Pellentesque velit libero,
+            porta ut luctus eu, consequat mollis odio. Class aptent taciti
+            sociosqu ad litora torquent per conubia nostra, per inceptos
+            himenaeos. Phasellus elementum scelerisque tellus, a rutrum est
+            hendrerit sed. Suspendisse consectetur magna id dui porta, vel
+            fermentum nisi vestibulum. Vestibulum malesuada arcu at ante
+            vulputate, ac dapibus lacus fringilla. Ut ex ante, congue volutpat
+            elementum ac, egestas sit amet sem. Sed commodo turpis velit.
+            Pellentesque commodo placerat risus, non rutrum turpis tincidunt
+            nec. Cras iaculis faucibus sem vel iaculis. Ut sit amet dolor nibh.
+            Quisque vehicula massa ac sapien iaculis lacinia. Donec eros eros,
+            scelerisque a ornare ac, auctor vel urna. Maecenas vel mauris porta,
+            rutrum magna nec, malesuada est. Duis cursus placerat purus sit amet
+            rutrum. Fusce imperdiet venenatis quam vel congue. Vestibulum
+            laoreet ante at mi egestas convallis. Donec euismod, mi eu feugiat
+            bibendum, metus quam tincidunt erat, in interdum quam risus eget
+            elit. Etiam at vehicula neque, eu tincidunt mauris. Nulla faucibus
+            rhoncus leo, sit amet volutpat velit pharetra at. Mauris ac urna
+            pretium, faucibus velit quis, commodo lacus.
+          </p>
+        </div>
+      </main>
+      <footer style={styles.footer}>Made using React Hooks</footer>
     </>
   );
 };
